@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Editor de Fluxograma</title>
+<link rel="stylesheet" href="/style/style.css">
+</head>
+<body>
+
+<div id="sidebar">
+    <h3>Blocos</h3>
+
+    <div class="palette-item" draggable="true" data-type="terminal">Terminal</div>
+    <div class="palette-item" draggable="true" data-type="processo">Processamento</div>
+    <div class="palette-item" draggable="true" data-type="entrada_saida">Entrada / Saída</div>
+    <div class="palette-item" draggable="true" data-type="decisao">Decisão</div>
+    <div class="palette-item" draggable="true" data-type="desvio">Desvio</div>
+    <div class="palette-item" draggable="true" data-type="entrada_manual">Entrada Manual</div>
+    <div class="palette-item" draggable="true" data-type="exibir">Exibir / Saída</div>
+    <div class="palette-item" draggable="true" data-type="conector_pagina">Conector de Página</div>
+
+    <button onclick="saveFlow()">Salvar</button>
+    <button onclick="loadFlow()">Carregar</button>
+</div>
+
+<div id="canvas-container">
+    <svg id="connections"></svg>
+    <div id="canvas"></div>
+</div>
+
+<script src="/JS/script.js"></script>
+</body>
+</html>

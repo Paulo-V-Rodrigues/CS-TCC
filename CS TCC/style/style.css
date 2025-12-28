@@ -1,0 +1,158 @@
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+}
+
+/* ===== SIDEBAR ===== */
+#sidebar {
+    width: 240px;
+    background: #1565c0;
+    color: white;
+    padding: 10px;
+}
+
+#sidebar h3 {
+    text-align: center;
+}
+
+.palette-item {
+    background: white;
+    color: #1565c0;
+    padding: 10px;
+    margin-bottom: 8px;
+    cursor: grab;
+    text-align: center;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+/* ===== CANVAS ===== */
+#canvas-container {
+    position: relative;
+    flex: 1;
+}
+
+#connections {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+#canvas {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: #eef1f4;
+    z-index: 2;
+}
+
+/* ===== BLOCO BASE ===== */
+.block {
+    position: absolute;
+    background: white;
+    border: 2px solid #333;
+    padding: 10px;
+    text-align: center;
+    cursor: move;
+    user-select: none;
+}
+
+.content {
+    cursor: text;
+}
+
+/* ===== FORMAS ===== */
+
+/* Terminal */
+.terminal {
+    border-radius: 30px;
+    width: 160px;
+}
+
+/* Processamento */
+.processo {
+    width: 160px;
+}
+
+/* Entrada / Saída */
+.entrada_saida {
+    width: 170px;
+    transform: skew(-20deg);
+}
+.entrada_saida .content {
+    transform: skew(20deg);
+}
+
+/* Decisão */
+.decisao {
+    width: 120px;
+    height: 120px;
+    transform: rotate(45deg);
+}
+.decisao .content {
+    transform: rotate(-45deg);
+    position: relative;
+    top: 36px;
+}
+
+/* Desvio */
+.desvio {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+}
+
+.desvio .content {
+    position: relative;
+    top: 40px;
+}
+
+/* Entrada Manual */
+.entrada_manual {
+    width: 160px;
+    clip-path: polygon(0 20%, 100% 0, 100% 100%, 0 80%);
+}
+
+/* Exibir / Saída */
+.exibir {
+    width: 170px;
+    clip-path: polygon(0 0, 90% 0, 100% 50%, 90% 100%, 0 100%);
+}
+
+/* Conector de Página */
+.conector_pagina {
+    width: 120px;
+    clip-path: polygon(0 0, 100% 0, 80% 100%, 20% 100%);
+}
+
+/* ===== CONECTORES ===== */
+
+.connector {
+    width: 12px;
+    height: 12px;
+    background: #1976d2;
+    border-radius: 50%;
+    position: absolute;
+    cursor: crosshair;
+}
+
+/* Entrada (lado esquerdo) */
+.connector.in {
+    left: -6px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Saída (lado direito) */
+.connector.out {
+    right: -6px;
+    top: 50%;
+    transform: translateY(-50%);
+}
