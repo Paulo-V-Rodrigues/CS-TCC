@@ -6,30 +6,38 @@ body {
     display: flex;
 }
 
-/* ===== SIDEBAR ===== */
+/*SIDEBAR*/
+
 #sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+
     width: 240px;
+    height: 100vh;
+
     background: #1565c0;
     color: white;
     padding: 10px;
 }
 
-#sidebar h3 {
+#sidebar h2 {
     text-align: center;
 }
 
 .palette-item {
     background: white;
-    color: #1565c0;
+    color: blue;
     padding: 10px;
     margin-bottom: 8px;
     cursor: grab;
     text-align: center;
-    border-radius: 4px;
+    border-radius: 8px;
     font-weight: bold;
 }
 
-/* ===== CANVAS ===== */
+/*CANVAS*/
+
 #canvas-container {
     position: relative;
     flex: 1;
@@ -53,11 +61,12 @@ body {
     z-index: 2;
 }
 
-/* ===== BLOCO BASE ===== */
+/*BLOCO BASE*/
+
 .block {
     position: absolute;
     background: white;
-    border: 2px solid #333;
+    border: 2px solid #1565c0;
     padding: 10px;
     text-align: center;
     cursor: move;
@@ -132,17 +141,6 @@ body {
     clip-path: polygon(0 0, 100% 0, 80% 100%, 20% 100%);
 }
 
-/* ===== CONECTORES ===== */
-
-.connector {
-    width: 12px;
-    height: 12px;
-    background: #1976d2;
-    border-radius: 50%;
-    position: absolute;
-    cursor: crosshair;
-}
-
 /* Entrada (lado esquerdo) */
 .connector.in {
     left: -6px;
@@ -156,3 +154,129 @@ body {
     top: 50%;
     transform: translateY(-50%);
 }
+
+.connector {
+    width: 12px;
+    height: 12px;
+    background-color: #555;
+    border-radius: 50%;
+    position: absolute; /* Necessário para o left/right/top que você criou */
+    cursor: crosshair;
+    z-index: 10; /* Garante que fique acima do conteúdo */
+}
+
+.connector:hover {
+    background-color: #007bff;
+    transform: translateY(-50%) scale(1.2);
+}
+
+/* Quando o conector a seta 'connected', ele fica azul */
+.connector.connected {
+    background-color: #2de000 !important;
+    border: 2px solid white; /* Um pequeno aro para destacar */
+}
+
+/* Tooltip comentario do balão*/
+
+.tooltip {
+    position: absolute;
+    display: none; /* Começa escondido */
+    background: #333;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    z-index: 1000;
+    pointer-events: none; /* Evita que o balão atrapalhe o mouse */
+    white-space: nowrap;
+}
+
+/* Pequena setinha no balão */
+.tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #333 transparent transparent transparent;
+}
+
+/* Imagens das linguagens */
+
+.image-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Duas colunas */
+    gap: 10px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+
+    max-height: 250px;     /* 🔹 LIMITE DE ALTURA */
+    overflow-y: auto;     /* 🔹 SCROLL VERTICAL */
+    overflow-x: hidden;   /* 🔹 evita scroll horizontal */
+}
+
+.palette-img {
+    width: 100%;
+    height: auto;
+    cursor: grab;
+    border: 2px solid transparent;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.palette-img:hover {
+    transform: scale(1.1);
+    border-color: white;
+}
+
+/*Redimenção IMG*/
+
+.image-block {
+    padding: 6px;
+}
+
+.image-block img {
+    display: block;
+    max-width: none;
+    user-select: none;
+    pointer-events: none;
+}
+
+/* Alça de redimensionamento */
+.resize-handle {
+    width: 12px;
+    height: 12px;
+    background: #1565c0;
+    position: absolute;
+    right: -6px;
+    bottom: -6px;
+    cursor: se-resize;
+    border-radius: 2px;
+}
+
+/* Barra de busca imagem */
+
+#image-search {
+    width: 100%;
+    padding: 10px 14px;
+    margin: 10px 0 12px 0;
+
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+
+    font-size: 14px;
+    outline: none;
+
+    transition: all 0.25s ease;
+}
+
+/* Placeholder mais suave */
+#image-search::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+

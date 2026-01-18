@@ -1,33 +1,50 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Editor de Fluxograma</title>
-<link rel="stylesheet" href="/CS TCC/style/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fluxograma</title>
+    <link rel="stylesheet" href="./style.css">
 </head>
-<body>
+    <body>
+        <div id="sidebar">
+        <h2>Blocos</h2>
 
-<div id="sidebar">
-    <h3>Blocos</h3>
+        <div class="palette-item" draggable="true" data-type="terminal">Terminal</div>
+        <div class="palette-item" draggable="true" data-type="processo">Processamento</div>
+        <div class="palette-item" draggable="true" data-type="entrada_saida">Entrada / Saída</div>
+        <div class="palette-item" draggable="true" data-type="decisao">Decisão</div>
+        <div class="palette-item" draggable="true" data-type="desvio">Desvio</div>
+        <div class="palette-item" draggable="true" data-type="entrada_manual">Entrada Manual</div>
+        <div class="palette-item" draggable="true" data-type="exibir">Exibir / Saída</div>
+        <div class="palette-item" draggable="true" data-type="conector_pagina">Conector de Página</div>
 
-    <div class="palette-item" draggable="true" data-type="terminal">Terminal</div>
-    <div class="palette-item" draggable="true" data-type="processo">Processamento</div>
-    <div class="palette-item" draggable="true" data-type="entrada_saida">Entrada / Saída</div>
-    <div class="palette-item" draggable="true" data-type="decisao">Decisão</div>
-    <div class="palette-item" draggable="true" data-type="desvio">Desvio</div>
-    <div class="palette-item" draggable="true" data-type="entrada_manual">Entrada Manual</div>
-    <div class="palette-item" draggable="true" data-type="exibir">Exibir / Saída</div>
-    <div class="palette-item" draggable="true" data-type="conector_pagina">Conector de Página</div>
+        <div id="image-palette">
+            <h2>Linguagens</h2>
+            
+            <input type="text" id="image-search" placeholder="Buscar Linguagem">
 
-    <button onclick="saveFlow()">Salvar</button>
-    <button onclick="loadFlow()">Carregar</button>
-</div>
+            <div class="image-box">
+                <img src="/img/images.jpeg" class="palette-img" data-name="python">
+                <img src="/img/images.png" class="palette-img" data-name="javascript">
+                <img src="/img/CSS3_logo_and_wordmark.svg.png" class="palette-img" data-name="css">
+                <img src="/img/HTML5_logo_and_wordmark.svg.png" class="palette-img" data-name="html">
+                <img src="/img/pngimg.com - php_PNG10.png" class="palette-img" data-name="php">
+                </div>
+        </div>
 
-<div id="canvas-container">
-    <svg id="connections"></svg>
-    <div id="canvas"></div>
-</div>
+        <button onclick="saveFlow()">Salvar</button>
+        <button onclick="loadFlow()">Carregar</button>
+    </div>
 
-<script src="/CS TCC/JS/script.js"></script>
+    <div id="canvas-conteiner">
+        <svg id="connections"></svg>
+        <div id="canvas"></div>
+    </div>
+
+    <div id="tooltip" class="tooltip"></div>
+
+
+<script src="./script.js"></script>
 </body>
 </html>
